@@ -13,7 +13,7 @@
         
         #page-loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
         #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader-text { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; letter-spacing: -0.02em; background: linear-gradient(to right, #4b5563 0%, #9ca3af 10%, #fff 20%, #f3f4f6 30%, #fff 40%, #9ca3af 50%, #4b5563 60%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: chrome-pass 1.5s linear infinite; }
+        .loader-text { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; letter-spacing: -0.02em; background: linear-gradient(to right, #4b5563 0%, #9ca3af 10%, #fff 20%, #f3f4f6 30%, #fff 40%, #9ca3af 50%, #4b5563 60%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: chrome-pass 3s linear infinite; text-shadow: 0 0 40px rgba(0,0,0,0.8); }
         .loader-bar-track { width: 120px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 32px; overflow: hidden; }
         .loader-bar-fill { height: 100%; background: white; width: 0%; animation: load-fill 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         @keyframes load-fill { 0% { width: 0%; } 100% { width: 100%; } }
@@ -21,34 +21,30 @@
         #delivery-banner { background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06); text-align: center; padding: 10px 16px; font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(255,255,255,0.5); position: relative; z-index: 39; }
         
         #star-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.3; animation: twinkle var(--duration) infinite ease-in-out; }
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.3); } }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.15; animation: twinkle var(--duration) infinite ease-in-out; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.3); } }
 
-        .chrome-text { display: inline-block; background: linear-gradient( to right, #4b5563 0%, #9ca3af 10%, #fff 20%, #f3f4f6 30%, #fff 40%, #9ca3af 50%, #4b5563 60% ); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: chrome-pass 4s linear infinite; }
+        /* Slowed down Chrome Pass Effect (8 seconds for elegance) */
+        .chrome-text { display: inline-block; background: linear-gradient( to right, #4b5563 0%, #9ca3af 10%, #fff 20%, #f3f4f6 30%, #fff 40%, #9ca3af 50%, #4b5563 60% ); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: chrome-pass 8s linear infinite; text-shadow: 0 0 30px rgba(0,0,0,0.7); }
         @keyframes chrome-pass { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
         
-        .side-panel { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; max-width: 400px; background: rgba(8, 8, 8, 0.98); backdrop-filter: blur(25px); z-index: 100; transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); border-left: 1px solid rgba(255,255,255,0.1); }
+        .side-panel { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; max-width: 400px; background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(35px); z-index: 100; transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); border-left: 1px solid rgba(255,255,255,0.08); }
         .side-panel.active { transform: translateX(0); }
 
-        .product-card { position: relative; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.05); transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); border-radius: 12px; }
-        .product-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.3); }
+        .product-card { position: relative; background: #050505; border: 1px solid rgba(255,255,255,0.03); transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); border-radius: 12px; }
+        .product-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); box-shadow: 0 20px 60px -20px rgba(0,0,0,0.8); }
         
         .img-zoom-container { position: relative; overflow: hidden; border-radius: 8px; aspect-ratio: 1/1; background: #111; }
-        .img-zoom-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s; opacity: 0.7; }
+        .img-zoom-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.5s; opacity: 0.8; }
         .product-card:hover .img-zoom-container img { transform: scale(1.1); opacity: 1; }
 
         .wish-heart-btn { position: absolute; top: 12px; right: 12px; z-index: 25; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .wish-heart-btn:hover { transform: scale(1.3); }
 
-        .stock-badge { position: absolute; top: 10px; left: 10px; font-size: 7px; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; padding: 4px 8px; border-radius: 4px; z-index: 10; }
-        .stock-low { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
-        .stock-out { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.1); }
-        .stock-ok { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
-
         .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         
-        #product-modal { background: rgba(0,0,0,0.9); backdrop-filter: blur(15px); display: none; opacity: 0; transition: opacity 0.4s ease; }
+        #product-modal { background: rgba(0,0,0,0.92); backdrop-filter: blur(25px); display: none; opacity: 0; transition: opacity 0.4s ease; border: 1px solid rgba(255,255,255,0.05); }
         #product-modal.active { display: flex; opacity: 1; }
 
         .qty-btn { width: 26px; height: 26px; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; border-radius: 4px; transition: 0.3s; }
@@ -60,13 +56,13 @@
 
         .scroll-line { width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3), transparent); margin: 0 auto; }
 
-        /* Animation for missing size */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         .shake-alert { animation: shake 0.3s ease-in-out infinite; border-color: #ef4444 !important; box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
+
+        .text-protection { padding: 8px 12px; border-radius: 8px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
+        
+        /* Thankful Letter Style */
+        .thankful-letter { max-width: 500px; margin: 0 auto; text-align: center; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; }
     </style>
 </head>
 <body class="selection:bg-white selection:text-black">
@@ -75,14 +71,9 @@
         <div class="loader-text">SHINE</div>
         <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
     </div>
-
     <div id="toast-container"></div>
-
     <div id="star-field"></div>
-
-    <div id="delivery-banner">
-        WhatsApp support available 24/7
-    </div>
+    <div id="delivery-banner">WhatsApp support available 24/7</div>
 
     <nav class="sticky top-0 w-full z-40 bg-black/60 backdrop-blur-2xl border-b border-white/5 px-6 py-4 flex justify-between items-center">
         <h1 class="text-xl font-black tracking-[0.3em] chrome-text uppercase cursor-pointer">SHINE</h1>
@@ -101,12 +92,12 @@
 
     <div id="cart-sidebar" class="side-panel p-8 flex flex-col">
         <div class="flex justify-between items-center mb-10">
-            <h2 class="text-xl font-bold tracking-widest uppercase">Your Collection</h2>
+            <h2 class="text-xl font-bold tracking-widest uppercase text-protection">Your Collection</h2>
             <button onclick="togglePanel('cart-sidebar')"><i data-lucide="x"></i></button>
         </div>
         <div id="cart-items-container" class="flex-grow overflow-y-auto space-y-4"></div>
         <div class="border-t border-white/10 pt-6 mt-6">
-            <div class="flex justify-between mb-6 text-xs uppercase tracking-widest">
+            <div class="flex justify-between mb-6 text-xs uppercase tracking-widest text-protection">
                 <span>Total</span> <span id="cart-total" class="font-bold text-lg">$0.00</span>
             </div>
             <button onclick="checkoutWhatsApp()" class="w-full bg-white text-black py-4 font-black uppercase tracking-widest hover:bg-slate-200 transition">Purchase Asset</button>
@@ -115,7 +106,7 @@
 
     <div id="wishlist-sidebar" class="side-panel p-8 flex flex-col">
         <div class="flex justify-between items-center mb-10">
-            <h2 class="text-xl font-bold tracking-widest uppercase">Wishlist</h2>
+            <h2 class="text-xl font-bold tracking-widest uppercase text-protection">Wishlist</h2>
             <button onclick="togglePanel('wishlist-sidebar')"><i data-lucide="x"></i></button>
         </div>
         <div id="wish-items-container" class="flex-grow overflow-y-auto space-y-4"></div>
@@ -123,10 +114,10 @@
 
     <div id="mobile-menu" class="side-panel p-8 flex flex-col">
         <div class="flex justify-between items-center mb-16">
-            <h2 class="text-xl font-bold tracking-widest uppercase">Menu</h2>
+            <h2 class="text-xl font-bold tracking-widest uppercase text-protection">Menu</h2>
             <button onclick="togglePanel('mobile-menu')"><i data-lucide="x"></i></button>
         </div>
-        <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-8 text-protection">
             <a href="#shoes" onclick="togglePanel('mobile-menu')" class="text-2xl font-black uppercase tracking-[0.2em] hover:chrome-text transition">1. Shop</a>
             <a href="#" class="text-2xl font-black uppercase tracking-[0.2em] hover:chrome-text transition">2. Custom Order</a>
             <a href="#" class="text-2xl font-black uppercase tracking-[0.2em] hover:chrome-text transition">3. Contact</a>
@@ -139,7 +130,7 @@
             <div class="md:w-1/2 aspect-square overflow-hidden">
                 <img id="modal-img" src="" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-110">
             </div>
-            <div class="p-8 md:p-10 md:w-1/2 flex flex-col justify-center relative">
+            <div class="p-8 md:p-10 md:w-1/2 flex flex-col justify-center relative bg-black/50">
                 <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white transition"><i data-lucide="x"></i></button>
                 <div id="modal-stock-label" class="mb-3"></div>
                 <h2 id="modal-name" class="text-2xl font-bold uppercase mb-1"></h2>
@@ -159,7 +150,7 @@
     </div>
 
     <header class="h-[80vh] flex flex-col justify-center items-center text-center px-6">
-        <p class="text-slate-400 tracking-[0.8em] text-[10px] uppercase mb-6 reveal">Curated Excellence</p>
+        <p class="text-slate-400 tracking-[0.8em] text-[10px] uppercase mb-6 reveal text-protection">Curated Excellence</p>
         <h2 class="text-7xl md:text-[12rem] font-black tracking-tighter chrome-text leading-none">SHINE.</h2>
         <a href="#shoes" class="mt-16 border border-white/10 bg-white/5 px-12 py-5 text-[10px] font-bold uppercase tracking-[0.4em] transition hover:border-white/40 reveal">Enter Showroom</a>
     </header>
@@ -167,45 +158,43 @@
     <section class="max-w-7xl mx-auto px-6 py-20 text-center">
         <div class="scroll-line mb-10"></div>
         <div class="reveal">
-            <h2 class="text-[11px] font-black tracking-[0.5em] uppercase text-white/40 mb-6">Established Excellence</h2>
-            <p class="text-xl md:text-3xl font-light leading-relaxed max-w-3xl mx-auto mb-16 italic">
-                Welcome to the exclusive archive of <span class="text-white font-bold">SHINE</span>. 
-                A curated destination trusted by over <span class="chrome-text font-black">200+ global enthusiasts</span> 
-                seeking precision, luxury, and unmatched style.
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-y border-white/5 py-12">
-                <div>
-                    <p class="text-4xl font-black mb-2 chrome-text">200+</p>
-                    <p class="text-[9px] uppercase tracking-widest text-slate-500">Satisfied Clients</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-black mb-2 chrome-text">100%</p>
-                    <p class="text-[9px] uppercase tracking-widest text-slate-500">Authentic Assets</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-black mb-2 chrome-text">24/7</p>
-                    <p class="text-[9px] uppercase tracking-widest text-slate-500">Bujumbura Support</p>
+            <h2 class="text-[11px] font-black tracking-[0.5em] uppercase text-white/40 mb-6 text-protection">Established Excellence</h2>
+            <div class="text-protected-block p-10 bg-black/60 rounded-3xl backdrop-blur-sm border border-white/5 shadow-inner">
+                <p class="text-xl md:text-3xl font-light leading-relaxed max-w-3xl mx-auto mb-16 italic">
+                    Welcome to the exclusive archive of <span class="text-white font-bold">SHINE</span>. 
+                    A curated destination trusted by over <span class="chrome-text font-black">200+ global enthusiasts</span> 
+                    seeking precision, luxury, and unmatched style.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-y border-white/5 py-12">
+                    <div><p class="text-4xl font-black mb-2 chrome-text">200+</p><p class="text-[9px] uppercase tracking-widest text-slate-500">Satisfied Clients</p></div>
+                    <div><p class="text-4xl font-black mb-2 chrome-text">100%</p><p class="text-[9px] uppercase tracking-widest text-slate-500">Authentic Assets</p></div>
+                    <div><p class="text-4xl font-black mb-2 chrome-text">24/7</p><p class="text-[9px] uppercase tracking-widest text-slate-500">Bujumbura Support</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="shoes" class="max-w-7xl mx-auto px-4 py-20">
-        <h3 class="text-[11px] font-black tracking-[0.6em] uppercase text-white mb-10 flex items-center gap-4">
-            <span class="w-8 h-[1px] bg-white/20"></span>
-            Exclusive Footwear
+        <h3 class="text-[11px] font-black tracking-[0.6em] uppercase text-white mb-10 flex items-center gap-4 text-protection">
+            <span class="w-8 h-[1px] bg-white/20"></span> Exclusive Footwear
         </h3>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8" id="shoes-grid"></div>
     </section>
 
     <footer id="footer-section" class="mt-32 py-20 border-t border-white/10 bg-black">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            
+            <div class="thankful-letter mb-20 reveal">
+                <i data-lucide="sparkles" class="w-6 h-6 text-white/30 mb-6 mx-auto"></i>
+                <h3 class="text-[10px] font-black tracking-[0.4em] uppercase mb-4 text-white">To Our Valued Collectors</h3>
+                <p class="text-xs text-slate-400 leading-relaxed italic">
+                    "Thank you for choosing SHINE. We believe that true luxury is found in the details and the journey we take together. Your support drives our pursuit of excellence. We are honored to be a part of your style story."
+                </p>
+            </div>
+
             <h2 class="text-2xl font-black tracking-[0.4em] chrome-text mb-10 uppercase">SHINE</h2>
             <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 mb-12 text-[11px] uppercase tracking-[0.3em] font-bold text-white/90">
                 <a href="#shoes" class="hover:text-white border-b border-transparent hover:border-white transition">Shop</a>
-                <a href="javascript:void(0)" class="hover:text-white border-b border-transparent hover:border-white transition">Privacy Policy</a>
-                <a href="javascript:void(0)" class="hover:text-white border-b border-transparent hover:border-white transition">Terms</a>
                 <a href="#" class="hover:text-white border-b border-transparent hover:border-white transition">Support</a>
             </div>
             <p class="text-[9px] tracking-[0.5em] text-white/40 uppercase mb-2">© 2026 SHINE LUXURY | BUJUMBURA</p>
@@ -215,10 +204,18 @@
 
     <script>
         const products = [
-            { id: 's1', name: 'Air Max Plus', price: 180, img: 'https://i.postimg.cc/ZR7f3gBc/nike-black-Air-Max-Plus-University.jpg', sizes: [40,41,42,43,44], stock: 'low' },
-            { id: 's2', name: 'Nike Dunker', price: 160, img: 'https://i.postimg.cc/LhdGY7wG/dae2e8b670d64e95a48a4fc86064e4f6.jpg', sizes: [39,40,41,42], stock: 'ok' },
-            { id: 's3', name: 'Summit Peak Runner', price: 200, img: 'https://i.postimg.cc/PxJq2pJk/images.jpg', sizes: [41,42,43], stock: 'out' },
-            { id: 's4', name: 'New Balance 520', price: 170, img: 'https://i.postimg.cc/d1GJW2Fr/mr530ck-nb-02-i.webp', sizes: [41,42,43,44], stock: 'ok' }
+            { id: 's1', name: 'Air Max Plus', price: 180, img: 'https://i.postimg.cc/ZR7f3gBc/nike-black-Air-Max-Plus-University.jpg', sizes: [40,41,42,43,44] },
+            { id: 's2', name: 'Nike Dunker', price: 160, img: 'https://i.postimg.cc/LhdGY7wG/dae2e8b670d64e95a48a4fc86064e4f6.jpg', sizes: [39,40,41,42] },
+            { id: 's3', name: 'Summit Peak Runner', price: 200, img: 'https://i.postimg.cc/PxJq2pJk/images.jpg', sizes: [41,42,43] },
+            { id: 's4', name: 'New Balance 520', price: 170, img: 'https://i.postimg.cc/d1GJW2Fr/mr530ck-nb-02-i.webp', sizes: [41,42,43,44] },
+            { id: 's5', name: 'Azure Wraith', price: 220, img: 'https://i.postimg.cc/Kjz6ZNnz/037bb334c3cd90f4071d4454659c3109.webp', sizes: [40,41,42,43] },
+            { id: 's6', name: 'Void Monarch', price: 190, img: 'https://i.postimg.cc/FHc2s1J3/468449a5-2540-4f69-ab9e-5ca4cbd2188d-800x800.jpg', sizes: [40,41,42] },
+            { id: 's7', name: 'Rosewood Silver', price: 175, img: 'https://i.postimg.cc/W4vxDjMW/womens-new-balance-1080-v15-rosewood-silver-metallic-1-400x300.jpg', sizes: [40,41,42] },
+            { id: 's8', name: 'Graphite 530', price: 165, img: 'https://i.postimg.cc/HL9RXKzc/260302-ch-chca-recklzk0ZP6y-Eabz0-non-hp-new-balance-story-530.jpg', sizes: [39,40,41,42,43] },
+            { id: 's9', name: 'Midnight Chunky', price: 155, img: 'https://i.postimg.cc/mDZqwwp8/New-Shita-Sneakerschunkydadshoes2023Black-INFINITSTORE.jpg', sizes: [40,41,42,43] },
+            { id: 's10', name: 'Lightblaze Specter', price: 145, img: 'https://i.postimg.cc/HnVNGLgH/Lightblaze-Shoes-Black-JQ7199-HM1.jpg', sizes: [38,39,40,41,42] },
+            { id: 's11', name: 'Obsidian Pulse', price: 185, img: 'https://i.postimg.cc/sxqN3Rfd/images.jpg', sizes: [40,41,42,43,44] },
+            { id: 's12', name: 'AR Onyx Trainer', price: 160, img: 'https://i.postimg.cc/L8zbF7wW/AR-314201458151-1.jpg', sizes: [40,41,42,43,44] }
         ];
 
         let cart = [];
@@ -231,19 +228,16 @@
             grid.innerHTML = '';
             products.forEach(p => {
                 const inWish = wishlist.includes(p.id);
-                const stockCls = { low: 'stock-low', out: 'stock-out', ok: 'stock-ok' }[p.stock];
-                const label = { low: 'Only 2 Left', out: 'Sold Out', ok: 'In Stock' }[p.stock];
                 const div = document.createElement('div');
                 div.className = "product-card reveal p-4";
                 div.innerHTML = `
                     <div class="img-zoom-container">
-                        <span class="stock-badge ${stockCls}">${label}</span>
                         <button onclick="event.stopPropagation(); toggleWish('${p.id}')" class="wish-heart-btn">
                             <i data-lucide="heart" class="w-5 h-5 ${inWish ? 'fill-red-500 stroke-red-500' : 'text-white/50'}"></i>
                         </button>
                         <img src="${p.img}" class="cursor-pointer" onclick='openModal(${JSON.stringify(p)})'>
                     </div>
-                    <div class="mt-4 flex justify-between items-center">
+                    <div class="mt-4 flex justify-between items-center text-protection">
                         <div>
                             <h4 class="text-[10px] font-black uppercase tracking-wider">${p.name}</h4>
                             <p class="text-[10px] text-slate-500">${formatPrice(p.price)}</p>
@@ -257,27 +251,15 @@
         }
 
         function openModal(p) {
-            window.selectedSize = null; // Reset size selection on open
+            window.selectedSize = null;
             const sizeLabel = document.getElementById('size-label');
             const sizeGrid = document.getElementById('modal-sizes');
-            
             sizeLabel.innerText = "Select Size";
             sizeLabel.classList.remove('text-red-500');
             sizeGrid.classList.remove('shake-alert');
-
-            const inWish = wishlist.includes(p.id);
             document.getElementById('modal-name').innerText = p.name;
             document.getElementById('modal-price').innerText = formatPrice(p.price);
             document.getElementById('modal-img').src = p.img;
-            
-            const badge = document.getElementById('modal-stock-label');
-            badge.innerText = p.stock === 'low' ? 'Only 2 Left' : (p.stock === 'out' ? 'Sold Out' : 'In Stock');
-            badge.className = `text-[9px] font-bold uppercase tracking-widest mb-3 ${p.stock === 'low' ? 'text-red-400' : 'text-green-400'}`;
-            
-            const heartBtn = document.getElementById('modal-heart-btn');
-            heartBtn.innerHTML = `<i data-lucide="heart" class="w-5 h-5 ${inWish ? 'fill-red-500 stroke-red-500' : ''}"></i>`;
-            heartBtn.onclick = () => { toggleWish(p.id); openModal(p); };
-            
             sizeGrid.innerHTML = '';
             p.sizes.forEach(s => {
                 const b = document.createElement('button');
@@ -293,7 +275,6 @@
                 };
                 sizeGrid.appendChild(b);
             });
-
             document.getElementById('modal-add-btn').onclick = () => { 
                 if(!window.selectedSize) {
                     sizeLabel.innerText = "Please select a size first";
@@ -302,10 +283,8 @@
                     showToast("Choose your size");
                     return;
                 }
-                addToCart(p, window.selectedSize); 
-                closeModal(); 
+                addToCart(p, window.selectedSize); closeModal(); 
             };
-
             document.getElementById('product-modal').classList.add('active');
             lucide.createIcons();
         }
@@ -315,21 +294,20 @@
             if(idx === -1) { wishlist.push(id); showToast("Saved to wishlist"); }
             else { wishlist.splice(idx, 1); showToast("Removed from wishlist"); }
             document.getElementById('wish-count').innerText = wishlist.length;
-            updateWishUI();
-            renderProducts();
+            updateWishUI(); renderProducts();
         }
 
         function updateWishUI() {
             const container = document.getElementById('wish-items-container');
             if (wishlist.length === 0) {
-                container.innerHTML = '<div class="flex flex-col items-center justify-center h-64 text-slate-500 text-[10px] uppercase tracking-widest gap-4"><i data-lucide="heart" class="w-8 h-8 opacity-20"></i>Wishlist is empty</div>';
+                container.innerHTML = '<div class="flex flex-col items-center justify-center h-64 text-slate-500 text-[10px] uppercase tracking-widest gap-4 text-protection">Wishlist is empty</div>';
             } else {
                 container.innerHTML = '';
                 wishlist.forEach(id => {
                     const p = products.find(prod => prod.id === id);
                     const d = document.createElement('div');
                     d.className = "flex items-center gap-3 bg-white/5 p-3 rounded-lg border border-white/10";
-                    d.innerHTML = `<img src="${p.img}" class="w-10 h-10 rounded object-cover flex-shrink-0"><div class="flex-grow"><p class="text-[9px] font-bold uppercase">${p.name}</p></div><button onclick="toggleWish('${p.id}')"><i data-lucide="trash-2" class="w-4 h-4 text-red-500"></i></button>`;
+                    d.innerHTML = `<img src="${p.img}" class="w-10 h-10 rounded object-cover flex-shrink-0"><div class="flex-grow text-protection"><p class="text-[9px] font-bold uppercase">${p.name}</p></div><button onclick="toggleWish('${p.id}')"><i data-lucide="trash-2" class="w-4 h-4 text-red-500"></i></button>`;
                     container.appendChild(d);
                 });
             }
@@ -341,29 +319,19 @@
             const existing = cart.find(i => i.key === key);
             if(existing) existing.qty++;
             else cart.push({ ...p, size, qty: 1, key });
-            updateCartUI();
-            togglePanel('cart-sidebar');
-            showToast("Added to collection");
+            updateCartUI(); togglePanel('cart-sidebar'); showToast("Added to collection");
         }
 
         function updateCartUI() {
             const container = document.getElementById('cart-items-container');
             if (cart.length === 0) {
-                container.innerHTML = '<div class="flex flex-col items-center justify-center h-64 text-slate-500 text-[10px] uppercase tracking-widest gap-4"><i data-lucide="shopping-bag" class="w-8 h-8 opacity-20"></i>Your cart is empty</div>';
+                container.innerHTML = '<div class="flex flex-col items-center justify-center h-64 text-slate-500 text-[10px] uppercase tracking-widest gap-4 text-protection">Your cart is empty</div>';
             } else {
                 container.innerHTML = '';
-                let total = 0;
                 cart.forEach(item => {
-                    total += item.price * item.qty;
                     const d = document.createElement('div');
                     d.className = "flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10";
-                    d.innerHTML = `<img src="${item.img}" class="w-12 h-12 rounded object-cover">
-                        <div class="flex-grow"><p class="text-[9px] font-bold uppercase">${item.name}</p><p class="text-[8px] opacity-40">Size ${item.size}</p></div>
-                        <div class="flex items-center gap-2">
-                            <button class="qty-btn" onclick="changeQty('${item.key}', -1)">-</button>
-                            <span class="qty-num">${item.qty}</span>
-                            <button class="qty-btn" onclick="changeQty('${item.key}', 1)">+</button>
-                        </div>`;
+                    d.innerHTML = `<img src="${item.img}" class="w-12 h-12 rounded object-cover"><div class="flex-grow text-protection"><p class="text-[9px] font-bold uppercase">${item.name}</p><p class="text-[8px] opacity-40">Size ${item.size}</p></div><div class="flex items-center gap-2"><button class="qty-btn" onclick="changeQty('${item.key}', -1)">-</button><span class="qty-num">${item.qty}</span><button class="qty-btn" onclick="changeQty('${item.key}', 1)">+</button></div>`;
                     container.appendChild(d);
                 });
                 document.getElementById('cart-total').innerText = formatPrice(cart.reduce((t, i) => t + (i.price * i.qty), 0));
@@ -381,22 +349,14 @@
 
         function checkoutWhatsApp() {
             if (cart.length === 0) return showToast("Your collection is empty");
-            let message = "Hello SHINE, I would like to purchase the following assets:\n\n";
+            let message = "Hello SHINE, I would like to purchase:\n\n";
             let total = 0;
             cart.forEach((item, index) => {
-                const itemTotal = item.price * item.qty;
-                total += itemTotal;
-                message += `${index + 1}. ${item.name}\n`;
-                message += `   Size: ${item.size}\n`;
-                message += `   Qty: ${item.qty}\n`;
-                message += `   Price: ${formatPrice(itemTotal)}\n\n`;
+                total += item.price * item.qty;
+                message += `${index + 1}. ${item.name} (Size: ${item.size}, Qty: ${item.qty})\n`;
             });
-            message += `--------------------------\n`;
-            message += `Total Amount: ${formatPrice(total)}\n`;
-            message += `--------------------------\n`;
-            message += `Please let me know the payment details.`;
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/25766957690?text=${encodedMessage}`, '_blank');
+            message += `\nTotal: ${formatPrice(total)}`;
+            window.open(`https://wa.me/25766957690?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function togglePanel(id) { document.querySelectorAll('.side-panel').forEach(p => p.id === id ? p.classList.toggle('active') : p.classList.remove('active')); }
@@ -406,32 +366,19 @@
         function handleScroll() { 
             document.querySelectorAll('.reveal').forEach(el => { 
                 const rect = el.getBoundingClientRect();
-                if(rect.top < window.innerHeight - 50 && rect.bottom > 50) {
-                    el.classList.add('active'); 
-                } else {
-                    el.classList.remove('active');
-                }
+                if(rect.top < window.innerHeight - 50) el.classList.add('active'); 
             }); 
         }
         
         const starField = document.getElementById('star-field');
         for(let i=0; i<120; i++) { 
-            const s=document.createElement('div'); 
-            s.className='star'; 
-            s.style.top=Math.random()*100+'%'; 
-            s.style.left=Math.random()*100+'%'; 
-            const size = Math.random()*3+1+'px';
-            s.style.width=size;
-            s.style.height=size;
-            s.style.setProperty('--duration', Math.random()*3+2+'s'); 
-            starField.appendChild(s); 
+            const s=document.createElement('div'); s.className='star'; 
+            s.style.top=Math.random()*100+'%'; s.style.left=Math.random()*100+'%'; 
+            const size = Math.random()*3+1+'px'; s.style.width=size; s.style.height=size;
+            s.style.setProperty('--duration', Math.random()*3+2+'s'); starField.appendChild(s); 
         }
 
-        window.addEventListener('load', () => {
-            setTimeout(() => document.getElementById('page-loader').classList.add('hidden'), 2000);
-            updateCartUI();
-            updateWishUI();
-        });
+        window.addEventListener('load', () => { setTimeout(() => document.getElementById('page-loader').classList.add('hidden'), 2000); updateCartUI(); updateWishUI(); });
         window.addEventListener('scroll', handleScroll);
         renderProducts();
     </script>
